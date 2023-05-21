@@ -10,8 +10,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "main.py",
-        "SineTone.ts"
+        "main.py"
     ],
     "testFiles": [
         "test.ts"

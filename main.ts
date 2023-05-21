@@ -1,4 +1,11 @@
 input.onButtonPressed(Button.A, function () {
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . # . .
+        . . . . .
+        . . . . .
+        `)
     music.setVolume(255)
     for (let index = 0; index < 2; index++) {
         for (let index = 0; index < 2; index++) {
@@ -22,6 +29,17 @@ input.onButtonPressed(Button.A, function () {
     play_sine_sound(C, 600)
 })
 function play_sine_sound (NoteName: number, diration_ms: number) {
+    music.setVolume(255)
+    music.playSoundEffect(music.createSoundEffect(
+    WaveShape.Sine,
+    NoteName,
+    NoteName,
+    0,
+    255,
+    diration_ms / 100,
+    SoundExpressionEffect.None,
+    InterpolationCurve.Logarithmic
+    ), SoundExpressionPlayMode.InBackground)
     music.playSoundEffect(music.createSoundEffect(
     WaveShape.Sine,
     NoteName,
@@ -30,9 +48,19 @@ function play_sine_sound (NoteName: number, diration_ms: number) {
     255,
     diration_ms,
     SoundExpressionEffect.None,
-    InterpolationCurve.Linear
-    ), SoundExpressionPlayMode.UntilDone)
+    InterpolationCurve.Logarithmic
+    ), SoundExpressionPlayMode.InBackground)
     basic.pause(diration_ms)
+    music.playSoundEffect(music.createSoundEffect(
+    WaveShape.Sine,
+    NoteName,
+    NoteName,
+    255,
+    0,
+    diration_ms / 100,
+    SoundExpressionEffect.None,
+    InterpolationCurve.Logarithmic
+    ), SoundExpressionPlayMode.InBackground)
 }
 let A = 0
 let G = 0
